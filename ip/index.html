@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etiquetador Minimalista</title>
+    
+    <link rel="stylesheet" href="style.css"> 
+    
+    <script src="BrowserPrint.js"></script> 
+</head>
+<body>
+    <div class="container">
+        
+        <h2>ETIQUETADOR DE DISPOSITIVOS</h2>
+        
+        <div class="input-group">
+            <label for="printOption">Formato de Impresión:</label>
+            <select id="printOption" onchange="toggleMacInput()">
+                <option value="ip_mac">Dirección IP y MAC</option>
+                <option value="ip_only">Solo Dirección IP</option>
+            </select>
+        </div>
+        
+        <div class="input-group">
+            <label for="ipAddress">Dirección IP:</label>
+            <input type="text" id="ipAddress" placeholder="Ej: 192.168.1.100" required>
+        </div>
+        
+        <div class="input-group" id="macContainer">
+            <label for="macAddress">Dirección MAC:</label>
+            <input type="text" id="macAddress" placeholder="Ej: AA:BB:CC:DD:EE:FF" required>
+        </div>
+        
+        <button id="printButton" onclick="imprimirEtiqueta()">IMPRIMIR ETIQUETA</button>
+        
+        <p class="nota">El servicio Zebra Browser Print debe estar activo.</p>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

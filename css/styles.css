@@ -1,0 +1,160 @@
+body {
+  min-height: 100vh;
+  min-width: 320px;
+  overflow-x: hidden; /* Evita el desbordamiento horizontal */
+}
+
+.sidebar {
+  width: 240px; /* Ancho reducido que pediste */
+  flex-shrink: 0;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* ▼▼▼ ESTA ES LA PARTE QUE FALTABA Y HACE LA MAGIA EN MÓVILES ▼▼▼ */
+@media (max-width: 767.98px) {
+  .main-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .sidebar {
+    /* Oculta el menú fuera de la pantalla por defecto */
+    transform: translateX(-100%);
+  }
+  .sidebar.show {
+    /* Muestra el menú cuando tiene la clase 'show' */
+    transform: translateX(0);
+  }
+}
+
+.main-content {
+  flex-grow: 1;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.sidebar .nav-link {
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+}
+.sidebar .nav-link.active {
+    background-color: #495057 !important;
+}
+.sidebar .nav-link:hover {
+    background-color: #3a4148;
+}
+
+.theme-switch .bi-sun-fill,
+[data-bs-theme="dark"] .theme-switch .bi-moon-stars-fill {
+  display: none;
+}
+[data-bs-theme="dark"] .theme-switch .bi-sun-fill {
+  display: inline-block;
+}
+.theme-switch .bi-moon-stars-fill {
+  display: inline-block;
+}
+
+.fila-clickeable { 
+    cursor: pointer; 
+}
+/* --- ESTILOS PARA LA TABLA ADAPTABLE EN MÓVILES --- */
+@media screen and (max-width: 767px) {
+  /* Ocultar la cabecera original de la tabla en móviles */
+  #tablaEquipos thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  #tablaEquipos tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  #tablaEquipos td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right; /* Alinea el contenido a la derecha */
+  }
+  
+  /* Añade el título de la columna antes de cada dato */
+  #tablaEquipos td::before {
+    content: attr(data-label); /* Usa el texto del atributo data-label */
+    float: left; /* Alinea el título a la izquierda */
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  #tablaEquipos td:last-child {
+    border-bottom: 0;
+  }
+}
+
+/* =========================================
+   ANIMACIONES Y TRANSICIONES GLOBALES
+   ========================================= */
+
+/* 1. Definir la animación de entrada (Fade In + Deslizamiento) */
+@keyframes paginaEntradaSuave {
+    0% {
+        opacity: 0;
+        transform: translateY(10px); /* La página empieza 10px más abajo */
+        filter: blur(4px); /* Empieza un poco borrosa */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Termina en su lugar original */
+        filter: blur(0); /* Se enfoca totalmente */
+    }
+}
+
+/* =========================================
+   ANIMACIONES DE TRANSICIÓN SUAVE
+   ========================================= */
+
+/* 1. Definimos la animación: Entrar suavemente desde abajo */
+@keyframes entradaSuave {
+    0% {
+        opacity: 0;
+        transform: translateY(15px); /* Empieza un poco abajo */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Termina en su sitio */
+    }
+}
+
+/* 2. Aplicamos la animación a todo el cuerpo de la página */
+body {
+    /* Ejecutar animación 'entradaSuave' durante 0.5 segundos */
+    animation: entradaSuave 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    
+    /* Importante: Evita el scroll horizontal durante la animación */
+    overflow-x: hidden; 
+}
+
+/* 3. Suavizar interacciones (Hover) */
+a, button, .btn, .nav-link, .card {
+    transition: all 0.3s ease-in-out !important;
+}
+
+/* 4. Efecto al pasar el mouse por las filas de las tablas */
+tr.fila-clickeable:hover {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    transform: scale(1.01); /* Crece un poquito imperceptiblemente */
+    transition: transform 0.2s ease;
+}
+
+/* 5. Efecto al pasar mouse por tarjetas */
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}

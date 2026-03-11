@@ -1,0 +1,131 @@
+/* Usaremos una fuente de sistema (limpia y rápida) o una fuente simple de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f2f5; /* Fondo gris muy claro y neutro */
+    color: #333333; /* Texto oscuro para alto contraste */
+    transition: background-color 0.5s ease;
+}
+
+.container {
+    background: #ffffff; /* Fondo blanco puro para el contenedor */
+    padding: 35px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra sutil y elegante */
+    width: 380px;
+    max-width: 90%;
+    text-align: center;
+    border: 1px solid #e0e0e0; /* Borde muy ligero */
+    transition: box-shadow 0.3s ease;
+}
+
+/* Animación: Ligero aumento de sombra al pasar el ratón */
+.container:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+h2 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 25px;
+    font-size: 1.6em;
+    letter-spacing: -0.5px; /* Estilo tipográfico moderno */
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 400;
+    color: #666666; /* Gris neutro para labels */
+    font-size: 0.9em;
+}
+
+input[type="text"],
+select {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: #333333;
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Animación: Borde sutil al enfocar */
+input[type="text"]:focus,
+select:focus {
+    outline: none;
+    border-color: #007bff; /* Azul primario sutil */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2); /* Sombra de enfoque suave */
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23333333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 30px;
+}
+
+#printButton {
+    width: 100%;
+    padding: 12px;
+    background-color: #333333; /* Color primario: Negro minimalista */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    margin-top: 15px;
+}
+
+/* Animación: Botón sutil al pasar el ratón */
+#printButton:hover {
+    background-color: #000000; /* Ligeramente más oscuro */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Animación: Efecto de "clic" al presionar */
+#printButton:active {
+    background-color: #007bff; /* Se vuelve azul al presionar */
+    transform: scale(0.98); /* Ligero encogimiento */
+}
+
+.nota {
+    font-size: 0.8em;
+    text-align: center;
+    color: #aaaaaa;
+    margin-top: 20px;
+}
+
+/* Animación: Transición suave para mostrar/ocultar la MAC */
+#macContainer {
+    overflow: hidden;
+    max-height: 100px; /* Suficiente altura para el contenido */
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+/* Estilo para inputs deshabilitados (bloqueados) */
+input[type="text"]:disabled {
+    background-color: #f8f8f8; /* Color de fondo muy claro para indicar bloqueo */
+    color: #aaaaaa; /* Texto gris claro */
+    cursor: not-allowed; /* Muestra el cursor de "no permitido" */
+    border-color: #eeeeee;
+    box-shadow: none;
+}
